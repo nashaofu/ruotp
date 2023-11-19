@@ -1,10 +1,3 @@
-# anyotp
-
-RFC-complaint one-time password algorithms written in Rust
-
-## example
-
-```rust
 use anyotp::{HOTP, TOTP};
 use std::{
     thread,
@@ -37,4 +30,3 @@ fn main() {
     println!("hotp_token {:?}", hotp_token);
     println!("totp_token {:?}", totp_token);
 }
-```

@@ -1,0 +1,16 @@
+[package]
+name = "anyotp"
+version = "0.0.1"
+edition = "2021"
+description = "RFC-complaint one-time password algorithms written in Rust"
+license-file = "LICENSE"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+base32 = "0.4.0"
+hmac = "0.12.1"
+sha1 = "0.10.6"
+sha2 = "0.10.8"
+thiserror = "1.0.50"
+urlencoding = "2.1.3"
