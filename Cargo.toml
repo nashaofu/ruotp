@@ -1,16 +1,20 @@
 [package]
-name = "anyotp"
+name = "ruotp"
 version = "0.0.1"
 edition = "2021"
 description = "RFC-complaint one-time password algorithms written in Rust"
 license-file = "LICENSE"
+documentation = "https://docs.rs/ruotp"
+homepage = "https://github.com/nashaofu/ruotp"
+repository = "https://github.com/nashaofu/ruotp.git"
+keywords = ["otp", "hotp", "totp"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-base32 = "0.4.0"
+base32 = "0.5.1"
 hmac = "0.12.1"
 sha1 = "0.10.6"
 sha2 = "0.10.8"
-thiserror = "1.0.50"
+thiserror = "2.0.11"
 urlencoding = "2.1.3"

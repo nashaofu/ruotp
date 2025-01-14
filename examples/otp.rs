@@ -1,4 +1,4 @@
-use anyotp::{HOTP, TOTP};
+use ruotp::{HOTP, TOTP};
 use std::{
     thread,
     time::{Duration, SystemTime, UNIX_EPOCH},
@@ -6,14 +6,14 @@ use std::{
 
 fn generate_hotp_token(secret: &str, timestamp: u64) -> String {
     let hotp = HOTP::from_base32(secret).unwrap();
-    let hotp_key_uri = hotp.to_key_uri("root", Some("AnyOTP"), 1).unwrap();
+    let hotp_key_uri = hotp.to_key_uri("root", Some("RuOTP"), 1).unwrap();
     println!("hotp_key_uri {}", hotp_key_uri);
     hotp.generate_token(timestamp / 30).unwrap()
 }
 
 fn generate_totp_token(secret: &str, timestamp: u64) -> String {
     let totp = TOTP::from_base32(secret).unwrap();
-    let totp_key_uri = totp.to_key_uri("root", Some("AnyOTP")).unwrap();
+    let totp_key_uri = totp.to_key_uri("root", Some("RuOTP")).unwrap();
     println!("totp_key_uri {}", totp_key_uri);
     totp.generate_token(timestamp).unwrap()
 }

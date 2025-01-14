@@ -9,7 +9,7 @@ pub fn generate_hotp_token(
     counter: u64,
     digits: u32,
 ) -> Result<String, OTPError> {
-    let hash = algorithm.digest(&secret, &counter.to_be_bytes())?;
+    let hash = algorithm.digest(secret, &counter.to_be_bytes())?;
     let offset: usize = (hash[hash.len() - 1] & 0xf) as usize;
 
     let binary = ((hash[offset] as u64) & 0x7f) << 24

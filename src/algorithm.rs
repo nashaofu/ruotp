@@ -40,7 +40,7 @@ impl Algorithm {
         <D::Core as BlockSizeUser>::BlockSize: IsLess<U256>,
         Le<<D::Core as BlockSizeUser>::BlockSize, U256>: NonZero,
     {
-        let mut hmac = Hmac::<D>::new_from_slice(&key)
+        let mut hmac = Hmac::<D>::new_from_slice(key)
             .map_err(|_| OTPError::HmacKeyLengthError(self.clone()))?;
 
         hmac.update(data);

@@ -22,7 +22,7 @@ impl HOTP {
     }
 
     pub fn from_base32(secret: &str) -> Result<Self, OTPError> {
-        let secret = decode(Alphabet::RFC4648 { padding: false }, secret)
+        let secret = decode(Alphabet::Rfc4648 { padding: false }, secret)
             .ok_or(OTPError::Base32DecodeError)?;
 
         Ok(HOTP::new(Algorithm::Sha1, secret, 6))
@@ -40,7 +40,7 @@ impl HOTP {
         issuer: Option<T>,
         counter: u64,
     ) -> Result<String, OTPError> {
-        let secret = encode(Alphabet::RFC4648 { padding: false }, &self.secret);
+        let secret = encode(Alphabet::Rfc4648 { padding: false }, &self.secret);
         to_key_uri(KeyUriOptions {
             r#type: KeyUriType::HOTP,
             secret,
@@ -49,7 +49,7 @@ impl HOTP {
             algorithm: Some(self.algorithm.clone()),
             digits: Some(self.digits),
             account_name: account_name.to_string(),
-            issuer: issuer.and_then(|issuer| Some(issuer.to_string())),
+            issuer: issuer.map(|issuer| issuer.to_string()),
         })
     }
 }
